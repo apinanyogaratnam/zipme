@@ -11,9 +11,15 @@ def main():
     unzip = sys.argv[2] == '-u' if len(sys.argv) > 2 else None
 
     if unzip:
-        extract_zip(file)
+        try:
+            extract_zip(file)
+        except zipfile.BadZipFile:
+            print("Not a valid zip file")
     else:
-        zip_file(file, file)
+        try:
+            zip_file(file)
+        except FileNotFoundError:
+            print("File not found")
 
 
 def extract_zip(zip_file):
