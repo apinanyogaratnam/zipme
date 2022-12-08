@@ -24,7 +24,7 @@ def main():
 
 def extract_zip(zip_file):
     with zipfile.ZipFile(zip_file, "r") as zip_ref:
-        zip_ref.extractall(".")
+        zip_ref.extractall("./temp")
 
 
 def zip_file(file):
