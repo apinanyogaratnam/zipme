@@ -1,4 +1,4 @@
-# Zipfile
+# Zipme
 
 This is a module to zip and unzip files.
 
