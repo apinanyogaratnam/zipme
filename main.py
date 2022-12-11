@@ -1,8 +1,10 @@
 import zipfile
 import sys
+import time
 
 
 def main():
+    start_time = time.time()
     if len(sys.argv) < 2:
         print("Usage: python main.py <zipfile>")
         return
@@ -21,6 +23,8 @@ def main():
         except FileNotFoundError:
             print("File not found")
 
+    print(f"--- {time.time() - start_time} seconds ---")
+
 
 def extract_zip(zip_file):
     with zipfile.ZipFile(zip_file, "r") as zip_ref:
@@ -28,7 +32,7 @@ def extract_zip(zip_file):
 
 
 def zip_file(file):
-    with zipfile.ZipFile(f"{file}.zip", "w") as zip_ref:
+    with zipfile.ZipFile(f"{file}.zip", "w", compresslevel=9) as zip_ref:
         zip_ref.write(file)
 
 
